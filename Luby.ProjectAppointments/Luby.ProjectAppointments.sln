@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luby.ProjectAppointments.WebApi", "Luby.ProjectAppointments.WebApi\Luby.ProjectAppointments.WebApi.csproj", "{F6EF866B-01D0-44AD-B8CA-4649CDB5430D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luby.ProjectAppointments.Application", "Luby.ProjectAppointments.Application\Luby.ProjectAppointments.Application.csproj", "{64029E1F-BCF0-4C5A-A8D0-DBB7E605A0A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luby.ProjectAppointments.Domain", "Luby.ProjectAppointments.Domain\Luby.ProjectAppointments.Domain.csproj", "{805F04D8-8EC7-4699-ABDF-3A90453C3483}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luby.ProjectAppointments.Infra.Data", "Luby.ProjectAppointments.Infra.Data\Luby.ProjectAppointments.Infra.Data.csproj", "{6E483954-2C6F-4DEF-BBDE-FC1887CA00BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luby.ProjectAppointments.CrossCutting", "Luby.ProjectAppointments.CrossCutting\Luby.ProjectAppointments.CrossCutting.csproj", "{264583B5-D23D-40D0-B383-9FF8E69FE005}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6EF866B-01D0-44AD-B8CA-4649CDB5430D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6EF866B-01D0-44AD-B8CA-4649CDB5430D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6EF866B-01D0-44AD-B8CA-4649CDB5430D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6EF866B-01D0-44AD-B8CA-4649CDB5430D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64029E1F-BCF0-4C5A-A8D0-DBB7E605A0A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64029E1F-BCF0-4C5A-A8D0-DBB7E605A0A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64029E1F-BCF0-4C5A-A8D0-DBB7E605A0A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64029E1F-BCF0-4C5A-A8D0-DBB7E605A0A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{805F04D8-8EC7-4699-ABDF-3A90453C3483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{805F04D8-8EC7-4699-ABDF-3A90453C3483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{805F04D8-8EC7-4699-ABDF-3A90453C3483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{805F04D8-8EC7-4699-ABDF-3A90453C3483}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E483954-2C6F-4DEF-BBDE-FC1887CA00BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E483954-2C6F-4DEF-BBDE-FC1887CA00BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E483954-2C6F-4DEF-BBDE-FC1887CA00BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E483954-2C6F-4DEF-BBDE-FC1887CA00BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{264583B5-D23D-40D0-B383-9FF8E69FE005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{264583B5-D23D-40D0-B383-9FF8E69FE005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{264583B5-D23D-40D0-B383-9FF8E69FE005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{264583B5-D23D-40D0-B383-9FF8E69FE005}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {398117DE-244C-499B-AF56-D2BD70CA9E37}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Luby.ProjectAppointments.Application\Luby.ProjectAppointments.Application.csproj" />
+    <ProjectReference Include="..\Luby.ProjectAppointments.Domain\Luby.ProjectAppointments.Domain.csproj" />
+    <ProjectReference Include="..\Luby.ProjectAppointments.Infra.Data\Luby.ProjectAppointments.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>
