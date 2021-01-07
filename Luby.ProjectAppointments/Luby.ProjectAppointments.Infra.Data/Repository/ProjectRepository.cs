@@ -17,7 +17,7 @@ namespace Luby.ProjectAppointments.Infra.Data.Repository
         {
         }
 
-        public async Task<IQueryable<Project>> GetWithAggreggationByAllAsync()
+        public async Task<IQueryable<Project>> GetWithAggregationByAllAsync()
         {
             try
             {
@@ -31,7 +31,7 @@ namespace Luby.ProjectAppointments.Infra.Data.Repository
             }
         }
 
-        public async Task<Project> GetWithAggreggationByIdAsync(Guid Id)
+        public async Task<Project> GetWithAggregationByIdAsync(Guid Id)
         {
             try
             {

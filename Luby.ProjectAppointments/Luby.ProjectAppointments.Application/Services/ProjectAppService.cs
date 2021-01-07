@@ -25,13 +25,13 @@ namespace Luby.ProjectAppointments.Application.Services
 
         public async Task<IEnumerable<ProjectViewModel>> GetAll()
         {
-            var result = await _projectRepository.GetWithAggreggationByAllAsync();
+            var result = await _projectRepository.GetWithAggregationByAllAsync();
             return result.ProjectTo<ProjectViewModel>(_mapper.ConfigurationProvider);
         }
 
         public async Task<ProjectViewModel> GetById(Guid id)
         {
-            return _mapper.Map<ProjectViewModel>(await _projectRepository.GetWithAggreggationByIdAsync(id));
+            return _mapper.Map<ProjectViewModel>(await _projectRepository.GetWithAggregationByIdAsync(id));
         }
 
         public async Task<bool> Remove(Guid id)

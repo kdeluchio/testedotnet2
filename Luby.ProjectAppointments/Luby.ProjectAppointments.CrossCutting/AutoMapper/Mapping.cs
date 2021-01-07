@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Luby.ProjectAppointments.Application.ViewModel.Appointment;
 using Luby.ProjectAppointments.Application.ViewModel.Developer;
 using Luby.ProjectAppointments.Application.ViewModel.Project;
 using Luby.ProjectAppointments.Domain.Models;
@@ -43,6 +44,11 @@ namespace Luby.ProjectAppointments.CrossCutting.AutoMapper
 
         private void Appointment()
         {
+            CreateMap<Appointment, AppointmentViewModel>()
+                .ReverseMap();
+
+            CreateMap<Appointment, NewAppointmentViewModel>()
+                .ReverseMap();
         }
     }
 }

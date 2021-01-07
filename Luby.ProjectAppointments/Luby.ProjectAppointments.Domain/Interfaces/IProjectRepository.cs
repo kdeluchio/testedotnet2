@@ -9,7 +9,7 @@ namespace Luby.ProjectAppointments.Domain.Interfaces
 {
     public interface IProjectRepository : IBaseRepository<Project>
     {
-        Task<IQueryable<Project>> GetWithAggreggationByAllAsync();
-        Task<Project> GetWithAggreggationByIdAsync(Guid id);
+        Task<IQueryable<Project>> GetWithAggregationByAllAsync();
+        Task<Project> GetWithAggregationByIdAsync(Guid id);
     }
 }

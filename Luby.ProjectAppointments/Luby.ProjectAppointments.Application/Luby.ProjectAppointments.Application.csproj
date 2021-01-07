@@ -8,10 +8,6 @@
     <ProjectReference Include="..\Luby.ProjectAppointments.Domain\Luby.ProjectAppointments.Domain.csproj" />
     <ProjectReference Include="..\Luby.ProjectAppointments.Infra.Data\Luby.ProjectAppointments.Infra.Data.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModel\Appointment\" />
-  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
