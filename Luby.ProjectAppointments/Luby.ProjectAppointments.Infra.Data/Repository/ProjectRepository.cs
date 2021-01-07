@@ -1,9 +1,12 @@
 ﻿using Luby.ProjectAppointments.Domain.Interfaces;
 using Luby.ProjectAppointments.Domain.Models;
 using Luby.ProjectAppointments.Infra.Data.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Luby.ProjectAppointments.Infra.Data.Repository
 {
@@ -13,5 +16,34 @@ namespace Luby.ProjectAppointments.Infra.Data.Repository
             : base(context)
         {
         }
+
+        public async Task<IQueryable<Project>> GetWithAggreggationByAllAsync()
+        {
+            try
+            {
+                return DbSet.Include(x => x.LinkedDevelopers)
+                            .ThenInclude(x => x.Developer)
+                            .AsQueryable();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<Project> GetWithAggreggationByIdAsync(Guid Id)
+        {
+            try
+            {
+                return await DbSet.Include(x => x.LinkedDevelopers)
+                                  .ThenInclude(x => x.Developer)
+                                  .SingleOrDefaultAsync(x => x.Id == Id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

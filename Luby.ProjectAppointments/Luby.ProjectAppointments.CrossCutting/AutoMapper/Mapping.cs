@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Luby.ProjectAppointments.Application.ViewModel.Developer;
+using Luby.ProjectAppointments.Application.ViewModel.Project;
 using Luby.ProjectAppointments.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,17 @@ namespace Luby.ProjectAppointments.CrossCutting.AutoMapper
 
         private void Project()
         {
+            CreateMap<Project, ProjectViewModel>()
+                .ReverseMap();
+
+            CreateMap<Project, NewProjectViewModel>()
+                .ReverseMap();
+
+            CreateMap<LinkedDeveloper, NewLinkedDeveloperViewModel>()
+                .ReverseMap();
+
+            CreateMap<LinkedDeveloper, LinkedDeveloperViewModel>()
+                .ReverseMap();
         }
 
         private void Appointment()

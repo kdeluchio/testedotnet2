@@ -35,6 +35,8 @@ namespace Luby.ProjectAppointments.CrossCutting.DependencyInjection
         public static void DependenciesService(IServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient<IDeveloperAppService, DeveloperAppService>();
+            serviceCollection.AddTransient<IProjectAppService, ProjectAppService>();
+
         }
     }
 }
