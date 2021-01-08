@@ -15,12 +15,15 @@ namespace Luby.ProjectAppointments.Application.Services
     {
         private readonly IMapper _mapper;
         private readonly IDeveloperRepository _developerRepository;
+        private readonly IDeveloperValidation _developerValidation;
 
         public DeveloperAppService(IMapper mapper,
-                                   IDeveloperRepository developerRepository)
+                                   IDeveloperRepository developerRepository,
+                                   IDeveloperValidation developerValidation)
         {
             _mapper = mapper;
             _developerRepository = developerRepository;
+            _developerValidation = developerValidation;
         }
 
         public async Task<IEnumerable<DeveloperViewModel>> GetAll()
@@ -40,6 +43,8 @@ namespace Luby.ProjectAppointments.Application.Services
             if (developer == null)
                 return false;
 
+            _developerValidation.ValidationOnRemoving(developer);
+
             await _developerRepository.DeleteAsync(id);
             await _developerRepository.SaveChangesAsync();
 
@@ -49,6 +54,9 @@ namespace Luby.ProjectAppointments.Application.Services
         public async Task<DeveloperViewModel> Update(DeveloperViewModel developerViewModel)
         {
             var developer = _mapper.Map<Developer>(developerViewModel);
+
+            _developerValidation.ValidationOnUpdating(developer);
+
             await _developerRepository.UpdateAsync(developer);
             await _developerRepository.SaveChangesAsync();
 
@@ -59,6 +67,8 @@ namespace Luby.ProjectAppointments.Application.Services
         public async Task<DeveloperViewModel> Create(NewDeveloperViewModel newDeveloperViewModel)
         {
             var developer = _mapper.Map<Developer>(newDeveloperViewModel);
+
+            _developerValidation.ValidationOnCreating(developer);
 
             await _developerRepository.InsertAsync(developer);
             await _developerRepository.SaveChangesAsync();

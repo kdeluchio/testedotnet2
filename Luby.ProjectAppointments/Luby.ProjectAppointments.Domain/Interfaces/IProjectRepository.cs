@@ -11,5 +11,8 @@ namespace Luby.ProjectAppointments.Domain.Interfaces
     {
         Task<IQueryable<Project>> GetWithAggregationByAllAsync();
         Task<Project> GetWithAggregationByIdAsync(Guid id);
+        bool HasLink(Guid ProjectId, Guid DeveloperId);
+        bool IsActive(Guid ProjectId);
+
     }
 }

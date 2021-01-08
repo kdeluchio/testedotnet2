@@ -80,5 +80,22 @@ namespace Luby.ProjectAppointments.Infra.Data.Repository
             }
         }
 
+        public bool HasAppointmentsSameRange(Guid developerId, DateTime start, DateTime end)
+        {
+            try
+            {
+                var result = DbSet.Where(x => x.DeveloperId == developerId 
+                                           && x.StartDate >= start && x.StartDate <= end
+                                           && x.EndDate >= start && x.StartDate <= end)
+                                  .Count();
+
+                return result > 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

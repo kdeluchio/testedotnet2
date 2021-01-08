@@ -1,6 +1,7 @@
 ﻿using Luby.ProjectAppointments.Application.Interfaces;
 using Luby.ProjectAppointments.Application.Services;
 using Luby.ProjectAppointments.Domain.Interfaces;
+using Luby.ProjectAppointments.Domain.Validations;
 using Luby.ProjectAppointments.Infra.Data.Context;
 using Luby.ProjectAppointments.Infra.Data.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -38,5 +39,13 @@ namespace Luby.ProjectAppointments.CrossCutting.DependencyInjection
             serviceCollection.AddTransient<IProjectAppService, ProjectAppService>();
             serviceCollection.AddTransient<IAppointmentAppService, AppointmentAppService>();
         }
+
+        public static void DependenciesValidation(IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddTransient<IDeveloperValidation, DeveloperValidation>();
+            serviceCollection.AddTransient<IProjectValidation, ProjectValidation>();
+            serviceCollection.AddTransient<IAppointmentValidation, AppointmentValidation>();
+        }
+
     }
 }

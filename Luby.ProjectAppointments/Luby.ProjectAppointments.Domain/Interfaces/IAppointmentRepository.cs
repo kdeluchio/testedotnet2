@@ -13,6 +13,7 @@ namespace Luby.ProjectAppointments.Domain.Interfaces
         Task<Appointment> GetWithAggregationByIdAsync(Guid id);
         Task<IQueryable<Appointment>> GetWithAggregationByDeveloperIdAsync(Guid developerId);
         Task<IQueryable<Appointment>> GetWithAggregationByProjectIdAsync(Guid projectId);
+        bool HasAppointmentsSameRange(Guid developerId, DateTime start, DateTime end);
 
     }
 }

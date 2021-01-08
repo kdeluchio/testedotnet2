@@ -15,12 +15,15 @@ namespace Luby.ProjectAppointments.Application.Services
     {
         private readonly IMapper _mapper;
         private readonly IAppointmentRepository _appointmentRepository;
+        private readonly IAppointmentValidation _appointmentValidation;
 
         public AppointmentAppService(IMapper mapper,
-                                     IAppointmentRepository appointmentRepository)
+                                     IAppointmentRepository appointmentRepository,
+                                     IAppointmentValidation appointmentValidation)
         {
             _mapper = mapper;
             _appointmentRepository = appointmentRepository;
+            _appointmentValidation = appointmentValidation;
         }
 
         public async Task<IEnumerable<AppointmentViewModel>> GetAll()
@@ -52,6 +55,8 @@ namespace Luby.ProjectAppointments.Application.Services
             if (appointment == null)
                 return false;
 
+            _appointmentValidation.ValidationOnRemoving(appointment);
+
             await _appointmentRepository.DeleteAsync(id);
             await _appointmentRepository.SaveChangesAsync();
 
@@ -61,6 +66,9 @@ namespace Luby.ProjectAppointments.Application.Services
         public async Task<AppointmentViewModel> Update(AppointmentViewModel appointmentViewModel)
         {
             var appointment = _mapper.Map<Appointment>(appointmentViewModel);
+
+            _appointmentValidation.ValidationOnUpdating(appointment);
+
             await _appointmentRepository.UpdateAsync(appointment);
             await _appointmentRepository.SaveChangesAsync();
 
@@ -71,6 +79,8 @@ namespace Luby.ProjectAppointments.Application.Services
         public async Task<AppointmentViewModel> Create(NewAppointmentViewModel newAppointmentViewModel)
         {
             var appointment = _mapper.Map<Appointment>(newAppointmentViewModel);
+            
+            _appointmentValidation.ValidationOnCreating(appointment);
 
             await _appointmentRepository.InsertAsync(appointment);
             await _appointmentRepository.SaveChangesAsync();

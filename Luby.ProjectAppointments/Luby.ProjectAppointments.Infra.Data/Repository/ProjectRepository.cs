@@ -45,5 +45,36 @@ namespace Luby.ProjectAppointments.Infra.Data.Repository
             }
         }
 
+        public bool HasLink(Guid ProjectId, Guid DeveloperId)
+        {
+            try
+            {
+                var result = DbSet.Include(x => x.LinkedDevelopers)
+                                  .Where(x => x.Id == ProjectId
+                                           && x.LinkedDevelopers.Where(y => y.DeveloperId == DeveloperId).Count() > 0)
+                                  .Count();
+                return result > 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool IsActive(Guid ProjectId)
+        {
+            try
+            {
+                var result = DbSet.Where(x => x.Id == ProjectId
+                                           && x.Status == Domain.Enums.StatusProject.Active)
+                                  .Count();
+
+                return result > 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

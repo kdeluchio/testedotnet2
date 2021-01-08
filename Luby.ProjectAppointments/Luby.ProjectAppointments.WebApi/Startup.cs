@@ -34,6 +34,8 @@ namespace Luby.ProjectAppointments.WebApi
 
             ConfigureDependencyInjection.DependenciesRepository(services);
             ConfigureDependencyInjection.DependenciesService(services);
+            ConfigureDependencyInjection.DependenciesValidation(services);
+
             services.AddAutoMapper(typeof(Mapping));
 
             services.AddSwaggerGen(c =>

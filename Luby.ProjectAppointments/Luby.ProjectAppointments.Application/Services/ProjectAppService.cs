@@ -15,12 +15,15 @@ namespace Luby.ProjectAppointments.Application.Services
     {
         private readonly IMapper _mapper;
         private readonly IProjectRepository _projectRepository;
+        private readonly IProjectValidation _projectValidation;
 
         public ProjectAppService(IMapper mapper,
-                                 IProjectRepository projectRepository)
+                                 IProjectRepository projectRepository,
+                                 IProjectValidation projectValidation)
         {
             _mapper = mapper;
             _projectRepository = projectRepository;
+            _projectValidation = projectValidation;
         }
 
         public async Task<IEnumerable<ProjectViewModel>> GetAll()
@@ -36,9 +39,11 @@ namespace Luby.ProjectAppointments.Application.Services
 
         public async Task<bool> Remove(Guid id)
         {
-            var developer = await _projectRepository.GetByIdAsync(id);
-            if (developer == null)
+            var project = await _projectRepository.GetByIdAsync(id);
+            if (project == null)
                 return false;
+
+            _projectValidation.ValidationOnRemoving(project);
 
             await _projectRepository.DeleteAsync(id);
             await _projectRepository.SaveChangesAsync();
@@ -57,6 +62,8 @@ namespace Luby.ProjectAppointments.Application.Services
                 item.ProjectId = project.Id;
             }
 
+            _projectValidation.ValidationOnUpdating(project);
+
             await _projectRepository.UpdateAsyncCollection(project, null, p => p.LinkedDevelopers);
             await _projectRepository.SaveChangesAsync();
 
@@ -74,6 +81,8 @@ namespace Luby.ProjectAppointments.Application.Services
 
                 item.ProjectId = project.Id;
             }
+
+            _projectValidation.ValidationOnCreating(project);
 
             await _projectRepository.InsertAsync(project);
             await _projectRepository.SaveChangesAsync();
