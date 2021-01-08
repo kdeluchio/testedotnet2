@@ -38,9 +38,9 @@ namespace Luby.ProjectAppointments.Domain.Validations
             ValidateLinkedDevelopers();
         }
 
-        private async void ValidateAppointments()
+        private void ValidateAppointments()
         {
-           var result = await _appointmentRepository.GetWithAggregationByProjectIdAsync(_project.Id);
+           var result = _appointmentRepository.GetWithAggregationByProjectIdAsync(_project.Id).Result;
             if (result.ToList().Count() > 0)
             {
                 throw new Exception("Este projeto já possui apontamentos, sendo assim não será possível excluí-lo.");

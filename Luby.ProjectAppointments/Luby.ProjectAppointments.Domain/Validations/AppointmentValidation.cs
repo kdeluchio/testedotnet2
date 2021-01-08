@@ -86,9 +86,9 @@ namespace Luby.ProjectAppointments.Domain.Validations
             }
         }
 
-        private async void ValidateDeveloperId()
+        private void ValidateDeveloperId()
         {
-            var dev = await _developerRepository.GetByIdAsync(_appointment.DeveloperId);
+            var dev = _developerRepository.GetByIdAsync(_appointment.DeveloperId).Result;
             if (dev == null || dev.Id == Guid.Empty)
             {
                 throw new Exception("Este Desenvolvedor inválido.");

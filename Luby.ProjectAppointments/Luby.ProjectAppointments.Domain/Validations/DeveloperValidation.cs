@@ -38,18 +38,18 @@ namespace Luby.ProjectAppointments.Domain.Validations
             ValidateDevelopersDuplicated();
         }
 
-        private async void ValidateDevelopersDuplicated()
+        private void ValidateDevelopersDuplicated()
         {
-           var result = await _developerRepository.GetByEmailAsync(_developer.Email);
+           var result = _developerRepository.GetByEmailAsync(_developer.Email).Result;
             if (result.Where(x => x.Id != _developer.Id).Count() > 0)
             {
                 throw new Exception("Este e-mail já foi cadastrado, não é possível prosseguir com a operação.");
             }
         }
 
-        private async void ValidateAppointments()
+        private void ValidateAppointments()
         {
-            var result = await _appointmentRepository.GetWithAggregationByDeveloperIdAsync(_developer.Id);
+            var result =  _appointmentRepository.GetWithAggregationByDeveloperIdAsync(_developer.Id).Result;
             if (result.ToList().Count() > 0)
             {
                 throw new Exception("Este desenvolvedor já possui apontamentos, sendo assim não será possível excluí-lo.");
